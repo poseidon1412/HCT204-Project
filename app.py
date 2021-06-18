@@ -125,7 +125,7 @@ def main():
 			elif type_of_plot:
 				cust_plot = cust_data.plot(kind = type_of_plot)
 				st.write(cust_plot)
-				st.pyplot(cust_plot)
+				st.pyplot()
 
 		# Count Plot	  
 		if st.checkbox('Value Counts Plot'):
