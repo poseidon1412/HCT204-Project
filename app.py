@@ -26,40 +26,87 @@ def main():
 		selected_model = st.sidebar.selectbox('Machine Learning Models',ml_models)
 		if selected_model == 'Linear Regression':
 			st.write('''# Linear Regression''')
-			clf = LinearRegression()
-			clf.fit(X_train,y_train)
-			accuracy = clf.score(X_test,y_test)
-			st.write('ACCURACY is {}'.format(accuracy))
+			try:
+				clf = LinearRegression()
+				clf.fit(X_train,y_train)
+				accuracy = clf.score(X_test,y_test)
+				st.write('ACCURACY is {}'.format(accuracy))
+		
+			except Exception as e:
+				st.error(
+					'Selected algorithm does not support inserted dataset \n'
+					'The data inserted is not compatible with the algorithm selected for example you have selected a regression algorithm '
+					'but your dataset include strings which cannot be parsed to floats or integers thus since the regression algorithm works '
+					'with numbers and not other datatypes, it will give an error please select another algorithm................. \n'
+					'PLEASE SELECT ANOTHER ALGORITHM')
 
 		elif selected_model == 'Logistic Regression':
 			st.write('''# Logistic Regression''')
-			clf = LogisticRegression(random_state=rndm_state)
-			clf.fit(X_train,y_train)
-			accuracy = clf.score(X_test,y_test)
-			st.write('ACCURACY is {}'.format(accuracy))	
+			try:
+				clf = LogisticRegression(random_state=rndm_state)
+				clf.fit(X_train,y_train)
+				accuracy = clf.score(X_test,y_test)
+				st.write('ACCURACY is {}'.format(accuracy))
+		
+			except Exception as e:
+				st.error(
+					'Selected algorithm does not support inserted dataset \n'
+					'The data inserted is not compatible with the algorithm selected for example you have selected a regression algorithm '
+					'but your dataset include strings which cannot be parsed to floats or integers thus since the regression algorithm works '
+					'with numbers and not other datatypes it will give an error please select another algorithm.......................... \n'
+					'PLEASE SELECT ANOTHER ALGORITHM.')
+	
 		elif selected_model == 'SVM':
 			st.write('''# SVM''')
-			C = st.sidebar.slider('C',0.01,10.0)
-			clf = SVC(C=C)
-			clf.fit(X_train,y_train)
-			accuracy = clf.score(X_test,y_test)
-			st.write('ACCURACY is {}'.format(accuracy))			
+			try:
+				C = st.sidebar.slider('C',0.01,10.0)
+				clf = SVC(C=C)
+				clf.fit(X_train,y_train)
+				accuracy = clf.score(X_test,y_test)
+				st.write('ACCURACY is {}'.format(accuracy))
+		
+			except Exception as e:
+				st.error(
+					'Selected algorithm does not support inserted dataset \n'
+					'The data inserted is not compatible with the algorithm selected for example you have selected a regression algorithm '
+					'but your dataset include strings which cannot be parsed to floats or integers thus since the regression algorithm works '
+					'with numbers and not other datatypes it will give an error please select another algorithm.......................... \n'
+					'PLEASE SELECT ANOTHER ALGORITHM.')
+			
 		elif selected_model == 'KNN':
 			st.write('''# KNN''')
-			K = st.sidebar.slider('K',1,15)
-			clf = KNeighborsClassifier(n_neighbors=K)
-			clf.fit(X_train,y_train)
-			accuracy = clf.score(X_test,y_test)
-			st.write('ACCURACY is {}'.format(accuracy))	
+			try:
+				K = st.sidebar.slider('K',1,15)
+				clf = KNeighborsClassifier(n_neighbors=K)
+				clf.fit(X_train,y_train)
+				accuracy = clf.score(X_test,y_test)
+				st.write('ACCURACY is {}'.format(accuracy))
+		
+			except Exception as e:
+				st.error(
+					'Selected algorithm does not support inserted dataset \n'
+					'The data inserted is not compatible with the algorithm selected for example you have selected a regression algorithm '
+					'but your dataset include strings which cannot be parsed to floats or integers thus since the regression algorithm works '
+					'with numbers and not other datatypes it will give an error please select another algorithm.......................... \n'
+					'PLEASE SELECT ANOTHER ALGORITHM.')	
 
 		elif selected_model == 'Random Forest':
 			st.write('''Random Forest''')
-			max_depth = st.sidebar.slider('max-depth',2,15)
-			n_estimators  = st.sidebar.slider('n_estimators',1,100)
-			clf = RandomForestClassifier(n_estimators = n_estimators,max_depth = max_depth,random_state=rndm_state)
-			clf.fit(X_train,y_train)
-			accuracy = clf.score(X_test,y_test)
-			st.write('ACCURACY is {}'.format(accuracy))
+			try:
+				max_depth = st.sidebar.slider('max-depth',2,15)
+				n_estimators  = st.sidebar.slider('n_estimators',1,100)
+				clf = RandomForestClassifier(n_estimators = n_estimators,max_depth = max_depth,random_state=rndm_state)
+				clf.fit(X_train,y_train)
+				accuracy = clf.score(X_test,y_test)
+				st.write('ACCURACY is {}'.format(accuracy))
+		
+			except Exception as e:
+				st.error(
+					'Selected algorithm does not support inserted dataset \n'
+					'The data inserted is not compatible with the algorithm selected for example you have selected a regression algorithm '
+					'but your dataset include strings which cannot be parsed to floats or integers thus since the regression algorithm works '
+					'with numbers and not other datatypes it will give an error please select another algorithm.......................... \n'
+					'PLEASE SELECT ANOTHER ALGORITHM.')
 
 	def explanatory_data_analysis():
 		# Show Dataset
@@ -235,4 +282,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-
